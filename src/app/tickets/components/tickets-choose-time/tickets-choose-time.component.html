@@ -1,0 +1,5 @@
+<h2>Choose Time</h2>
+
+<mat-button-toggle-group (valueChange)="select($event)" name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle *ngFor="let time of times" [value]="time">{{ time.start }} - {{ time.end }}</mat-button-toggle>
+</mat-button-toggle-group>

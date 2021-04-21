@@ -1,0 +1,11 @@
+<div class="tickets__header">
+  <app-tickets-choose-date (selectDate)="selectDate($event)"></app-tickets-choose-date>
+  <app-tickets-choose-time
+    *ngIf="globalService.getSelectedDate() | async"
+    (selectTime)="selectTime($event)"
+  ></app-tickets-choose-time>
+</div>
+<app-tickets-list
+  *ngIf="(ticketsService.getTickets() | async)?.length"
+  [tickets]="ticketsService.getTickets() | async"
+></app-tickets-list>
