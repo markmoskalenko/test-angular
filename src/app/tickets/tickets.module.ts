@@ -16,6 +16,7 @@ import { ticketsReducer } from '../core/tickets/tickets.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { TicketsEffects } from '../core/tickets/tickets.effects';
 import { AngularCounterModule } from 'angular-input-counter';
+import { InputCounterModule } from '../shared/input-counter/input-counter.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AngularCounterModule } from 'angular-input-counter';
     ReactiveFormsModule,
     StoreModule.forFeature(ticketsFeatureKey, ticketsReducer),
     EffectsModule.forFeature([TicketsEffects]),
-    AngularCounterModule
+    AngularCounterModule,
+    InputCounterModule
   ]
 })
 export class TicketsModule {

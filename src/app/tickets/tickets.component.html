@@ -5,7 +5,4 @@
     (selectTime)="selectTime($event)"
   ></app-tickets-choose-time>
 </div>
-<app-tickets-list
-  *ngIf="(ticketsService.getTickets() | async)?.length"
-  [tickets]="ticketsService.getTickets() | async"
-></app-tickets-list>
+<app-tickets-list *ngIf="tickets.length" [tickets]="tickets"></app-tickets-list>

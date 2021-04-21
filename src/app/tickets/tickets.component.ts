@@ -4,6 +4,7 @@ import { TimeModel } from '../core/global/time.model';
 import { combineLatest, Subscription } from 'rxjs';
 import { TicketsService } from '../core/tickets/tickets.service';
 import { filter } from 'rxjs/operators';
+import { TicketModel } from '../core/tickets/ticket.model';
 
 export interface PeriodicElement {
   name: string;
@@ -19,6 +20,7 @@ export interface PeriodicElement {
 })
 export class TicketsComponent implements OnInit, OnDestroy {
   private readonly subscriptions$ = new Subscription();
+  tickets: TicketModel[] = [];
 
   constructor(
     public readonly globalService: GlobalService,
@@ -38,6 +40,13 @@ export class TicketsComponent implements OnInit, OnDestroy {
           }
         })
     );
+
+    this.subscriptions$.add(this
+      .ticketsService
+      .getTickets()
+      .subscribe((tickets: TicketModel[]) => {
+        this.tickets = tickets;
+      }));
   }
 
   ngOnDestroy(): void {

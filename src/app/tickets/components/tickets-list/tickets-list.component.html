@@ -24,15 +24,17 @@
   <ng-container matColumnDef="counter">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element" width="100">
-      <angular-input-counter
-        [counterValue]="0"
-        [min]="0"
-        [max]="20"
-        [step]="1"
-        [readonly]="true"
-        (change)="counterValue($event)"
-        color="primary">
-      </angular-input-counter>
+<!--      <angular-input-counter-->
+<!--        [counterValue]="0"-->
+<!--        [min]="0"-->
+<!--        [max]="20"-->
+<!--        [step]="1"-->
+<!--        [readonly]="true"-->
+<!--        (change)="counterValue($event)"-->
+<!--        color="primary">-->
+<!--      </angular-input-counter>-->
+      <app-input-counter></app-input-counter>
+      a
     </td>
   </ng-container>
 

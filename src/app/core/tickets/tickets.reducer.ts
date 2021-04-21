@@ -16,7 +16,7 @@ const reducer = createReducer(
   on(loadTicketsSuccessAction, (state, action) => adapter.setAll(action.tickets, state)),
 );
 
-export function ticketsReducer(state: TicketState | undefined, action: Action) {
+export function ticketsReducer(state: TicketState, action: Action) {
   return reducer(state, action);
 }
 
