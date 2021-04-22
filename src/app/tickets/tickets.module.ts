@@ -17,6 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { TicketsEffects } from '../core/tickets/tickets.effects';
 import { AngularCounterModule } from 'angular-input-counter';
 import { InputCounterModule } from '../shared/input-counter/input-counter.module';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { InputCounterModule } from '../shared/input-counter/input-counter.module
     StoreModule.forFeature(ticketsFeatureKey, ticketsReducer),
     EffectsModule.forFeature([TicketsEffects]),
     AngularCounterModule,
-    InputCounterModule
+    InputCounterModule,
+    MatRippleModule
   ]
 })
 export class TicketsModule {

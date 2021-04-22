@@ -31,3 +31,13 @@ const {
 } = adapter.getSelectors();
 
 export const selectTicketList = createSelector(selectTicketState, selectAll);
+
+export const selectSelectedTickets = createSelector(
+  selectTicketList,
+  (state) => state.filter(_ => _.count > 0)
+);
+
+export const selectIsExistsSelectedTickets = createSelector(
+  selectSelectedTickets,
+  (state) => state.length > 0
+);

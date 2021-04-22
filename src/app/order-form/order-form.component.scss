@@ -2,4 +2,18 @@
   mat-form-field {
     margin-right: 5px;
   }
+
+  mat-radio-group mat-radio-button {
+    margin-left: 10px;
+  }
+
+  button {
+    margin-top: 25px;
+  }
+
+  .order-form {
+    &__row {
+      margin-bottom: 20px;
+    }
+  }
 }

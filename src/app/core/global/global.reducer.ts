@@ -1,15 +1,30 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { TimeModel } from './time.model';
 import { setSelectedDate, setSelectedTime } from './global.actions';
+import { OrderFormModel } from './order-form.model';
 
 export interface GlobalState {
   selectedDate: Date | undefined;
   selectedTime: TimeModel | undefined;
+  orderForm: OrderFormModel | undefined;
 }
 
 const initialState: GlobalState = {
   selectedDate: undefined,
-  selectedTime: undefined
+  selectedTime: undefined,
+  orderForm: {
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: {
+      street: '',
+      city: '',
+      state: '',
+      zip: ''
+    },
+    policy: false,
+    gender: 'male',
+  }
 };
 
 const reducer = createReducer(
@@ -27,13 +42,3 @@ const reducer = createReducer(
 export function globalReducer(state: GlobalState | undefined, action: Action) {
   return reducer(state, action);
 }
-
-
-//
-// export const selectGlobalState = createFeatureSelector<GlobalState>(globalFeatureKey);
-//
-// const {
-//   selectAll,
-// } = adapter.getSelectors();
-//
-// export const selectGlobalModelList = createSelector(selectGlobalState, selectAll);

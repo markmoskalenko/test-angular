@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatButtonModule,
+    MatRippleModule,
   ]
 })
 export class OrderFormModule {

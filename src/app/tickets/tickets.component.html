@@ -6,3 +6,11 @@
   ></app-tickets-choose-time>
 </div>
 <app-tickets-list *ngIf="tickets.length > 0" [tickets]="tickets"></app-tickets-list>
+
+<a
+  class="tickets__next-step"
+  routerLink="/order"
+  mat-stroked-button
+  mat-ripple color="primary"
+  [disabled]="!isSelected">Next Step
+</a>

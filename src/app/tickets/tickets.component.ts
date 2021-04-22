@@ -21,6 +21,7 @@ export interface PeriodicElement {
 export class TicketsComponent implements OnInit, OnDestroy {
   private readonly subscriptions$ = new Subscription();
   tickets: TicketModel[] = [];
+  isSelected = false;
 
   constructor(
     public readonly globalService: GlobalService,
@@ -46,6 +47,13 @@ export class TicketsComponent implements OnInit, OnDestroy {
       .getTickets()
       .subscribe((tickets: TicketModel[]) => {
         this.tickets = tickets;
+      }));
+
+    this.subscriptions$.add(this
+      .ticketsService
+      .getIsExistsSelectedTickets()
+      .subscribe((isSelected: boolean) => {
+        this.isSelected = isSelected;
       }));
   }
 

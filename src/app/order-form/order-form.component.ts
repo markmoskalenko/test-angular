@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomErrorStateMatcher } from '../core/form/error-state-matcher';
+import { GlobalService } from '../core/global/global.service';
 
 @Component({
   selector: 'app-order-form',
@@ -17,18 +19,22 @@ export class OrderFormComponent implements OnInit {
       state: new FormControl('', [Validators.required]),
       zip: new FormControl('')
     }),
-    policy: new FormControl('', [Validators.required]),
+    policy: new FormControl(''),
     gender: new FormControl('male'),
 
   });
 
-  constructor() {
+  matcher = new CustomErrorStateMatcher();
+
+  constructor(private readonly globalService: GlobalService) {
   }
 
   ngOnInit(): void {
   }
 
   submit(): void {
-
+    if (this.orderForm.valid) {
+      this.globalService.setOrderForm(this.orderForm.getRawValue());
+    }
   }
 }

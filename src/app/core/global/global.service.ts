@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { setSelectedDate, setSelectedTime } from './global.actions';
+import { setOrderForm, setSelectedDate, setSelectedTime } from './global.actions';
 import { TimeModel } from './time.model';
 import { Observable } from 'rxjs';
 import { getSelectedDate, getSelectedTime } from './global.selectors';
+import { OrderFormModel } from './order-form.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalService {
   constructor(private readonly store: Store) {
+  }
+
+  setOrderForm(form: OrderFormModel): void {
+    this.store.dispatch(setOrderForm({form}));
   }
 
   setSelectedDate(date: Date): void {
