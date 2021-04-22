@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -9,9 +9,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./input-counter.component.scss']
 })
 export class InputCounterComponent implements OnInit, OnDestroy {
+  @Input() value = 0;
   @Output() changeValue: EventEmitter<number> = new EventEmitter<number>();
   private readonly subscription$ = new Subscription();
-  value = 0;
 
   control = new FormControl();
 
@@ -19,6 +19,8 @@ export class InputCounterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('i');
+    this.control.setValue(this.value);
     this.subscription$.add(
       this.control.valueChanges.pipe(debounceTime(100)).subscribe((_) => this.changeValue.emit(_))
     );

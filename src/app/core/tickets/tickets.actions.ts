@@ -2,9 +2,14 @@ import { createAction, props } from '@ngrx/store';
 import { TicketModel } from './ticket.model';
 import { TimeModel } from '../global/time.model';
 
-export const loadTickets = createAction(
+export const loadTicketsAction = createAction(
   '[ticket] load',
   props<{ date: Date, time: TimeModel }>()
+);
+
+export const orderTicketAction = createAction(
+  '[ticket] order ticket',
+  props<{ count: number, ticket: TicketModel }>()
 );
 
 export const loadTicketsSuccessAction = createAction(
