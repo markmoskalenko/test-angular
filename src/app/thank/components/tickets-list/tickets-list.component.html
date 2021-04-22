@@ -1,0 +1,35 @@
+<h2>Ticket List</h2>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="tickets-list__table">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No.</th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date</th>
+    <td mat-cell *matCellDef="let element"> {{ element.date | date: 'YYYY-MM-d' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time</th>
+    <td mat-cell *matCellDef="let element"> {{ element.time.start }} - {{ element.time.end }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="counter">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element" width="100">
+      {{ element.count }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
