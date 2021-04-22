@@ -1,0 +1,72 @@
+<form [formGroup]="orderForm" (ngSubmit)="submit()">
+
+  <mat-checkbox formControlName="policy">I agree with the policy</mat-checkbox>
+
+  <div>
+    <label>Gender: </label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <label>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+  </label>
+
+  <label>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Nick" formControlName="firstName">
+    </mat-form-field>
+  </label>
+
+  <label>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+  </label>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+
+    <label>
+      <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street">
+      </mat-form-field>
+    </label>
+
+    <label>
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city">
+      </mat-form-field>
+    </label>
+
+    <label>
+      <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+      </mat-form-field>
+    </label>
+  </div>
+
+<!--  <mat-form-field appearance="fill"-->
+<!--                  [hideRequiredMarker]="hideRequiredControl.value"-->
+<!--                  [floatLabel]="floatLabelControl.value">-->
+<!--    <mat-select required>-->
+<!--      <mat-option>&#45;&#45; None &#45;&#45;</mat-option>-->
+<!--      <mat-option value="option">Option</mat-option>-->
+<!--    </mat-select>-->
+<!--    <mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>-->
+<!--  </mat-form-field>-->
+
+  <button type="submit" [disabled]="!orderForm.valid">Submit</button>
+
+</form>

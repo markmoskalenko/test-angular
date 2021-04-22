@@ -11,12 +11,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { ticketsFeatureKey } from './core/tickets';
-import { ticketsReducer } from './core/tickets/tickets.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

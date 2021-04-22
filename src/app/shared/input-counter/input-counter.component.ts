@@ -19,7 +19,6 @@ export class InputCounterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('i');
     this.control.setValue(this.value);
     this.subscription$.add(
       this.control.valueChanges.pipe(debounceTime(100)).subscribe((_) => this.changeValue.emit(_))
