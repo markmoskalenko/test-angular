@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomErrorStateMatcher } from '../core/form/error-state-matcher';
 import { GlobalService } from '../core/global/global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-form',
@@ -26,7 +27,8 @@ export class OrderFormComponent implements OnInit {
 
   matcher = new CustomErrorStateMatcher();
 
-  constructor(private readonly globalService: GlobalService) {
+  constructor(private readonly globalService: GlobalService,
+              private readonly router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class OrderFormComponent implements OnInit {
   submit(): void {
     if (this.orderForm.valid) {
       this.globalService.setOrderForm(this.orderForm.getRawValue());
+      this.router.navigate(['/thank']);
     }
   }
 }

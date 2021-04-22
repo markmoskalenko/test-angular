@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { setOrderForm, setSelectedDate, setSelectedTime } from './global.actions';
 import { TimeModel } from './time.model';
 import { Observable } from 'rxjs';
-import { getSelectedDate, getSelectedTime } from './global.selectors';
+import { getOrderForm, getSelectedDate, getSelectedTime } from './global.selectors';
 import { OrderFormModel } from './order-form.model';
 
 @Injectable({
@@ -31,5 +31,9 @@ export class GlobalService {
 
   getSelectedTime(): Observable<TimeModel | undefined> {
     return this.store.pipe(select(getSelectedTime));
+  }
+
+  getOrderForm(): Observable<OrderFormModel | undefined> {
+    return this.store.pipe(select(getOrderForm));
   }
 }

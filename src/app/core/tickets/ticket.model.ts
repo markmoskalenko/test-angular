@@ -3,4 +3,5 @@ export interface TicketModel {
   name: string;
   date: string;
   count: number;
+  price: number;
 }

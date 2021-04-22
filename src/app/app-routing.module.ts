@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'order',
     loadChildren: () => import('./order-form/order-form.module').then((m) => m.OrderFormModule),
   },
+  {
+    path: 'thank',
+    loadChildren: () => import('./thank/thank.module').then((m) => m.ThankModule),
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { TimeModel } from './time.model';
-import { setSelectedDate, setSelectedTime } from './global.actions';
+import { setSelectedDate, setSelectedTime, setOrderForm } from './global.actions';
 import { OrderFormModel } from './order-form.model';
 
 export interface GlobalState {
@@ -36,6 +36,10 @@ const reducer = createReducer(
   on(setSelectedTime, (state, action) => ({
     ...state,
     selectedTime: action.time,
+  })),
+  on(setOrderForm, (state, action) => ({
+    ...state,
+    orderForm: action.form,
   }))
 );
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TicketModel } from '../../../core/tickets/ticket.model';
 import { TicketsService } from '../../../core/tickets/tickets.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,17 +8,25 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './tickets-list.component.html',
   styleUrls: ['./tickets-list.component.scss']
 })
-export class TicketsListComponent implements OnInit {
-  @Input() tickets: TicketModel[] = [];
-  dataSource = new MatTableDataSource<TicketModel>();
-
-  displayedColumns: string[] = ['id', 'name', 'date', 'time', 'counter'];
-
-  constructor(private orderTicket: TicketsService) {
+export class TicketsListComponent {
+  @Input() set tickets(value: TicketModel[]) {
+    if (value) {
+      this.dataSource.data = value;
+    }
   }
 
-  ngOnInit(): void {
-    this.dataSource.data = this.tickets;
+  @Input() set sum(value: number) {
+    if (value) {
+      this.orderSum = value;
+    }
+  }
+
+  orderSum = 0;
+
+  dataSource = new MatTableDataSource<TicketModel>();
+  displayedColumns: string[] = ['id', 'name', 'date', 'time', 'price', 'counter', 'total'];
+
+  constructor(private orderTicket: TicketsService) {
   }
 
   order(count: number, ticket: TicketModel): void {

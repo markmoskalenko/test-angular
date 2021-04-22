@@ -6,13 +6,6 @@ import { TicketsService } from '../core/tickets/tickets.service';
 import { filter } from 'rxjs/operators';
 import { TicketModel } from '../core/tickets/ticket.model';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -21,11 +14,13 @@ export interface PeriodicElement {
 export class TicketsComponent implements OnInit, OnDestroy {
   private readonly subscriptions$ = new Subscription();
   tickets: TicketModel[] = [];
+  orderSum = 0;
   isSelected = false;
 
   constructor(
     public readonly globalService: GlobalService,
-    public ticketsService: TicketsService) {
+    private readonly ticketsService: TicketsService
+  ) {
   }
 
   ngOnInit(): void {
@@ -45,16 +40,20 @@ export class TicketsComponent implements OnInit, OnDestroy {
     this.subscriptions$.add(this
       .ticketsService
       .getTickets()
-      .subscribe((tickets: TicketModel[]) => {
-        this.tickets = tickets;
-      }));
+      .subscribe((tickets: TicketModel[]) => this.tickets = tickets)
+    );
 
     this.subscriptions$.add(this
       .ticketsService
       .getIsExistsSelectedTickets()
-      .subscribe((isSelected: boolean) => {
-        this.isSelected = isSelected;
-      }));
+      .subscribe((isSelected) => this.isSelected = isSelected)
+    );
+
+    this.subscriptions$.add(this
+      .ticketsService
+      .getSum()
+      .subscribe((sum) => this.orderSum = sum)
+    );
   }
 
   ngOnDestroy(): void {

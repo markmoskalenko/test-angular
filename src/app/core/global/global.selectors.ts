@@ -15,3 +15,8 @@ export const getSelectedTime = createSelector(
   selectGlobalState,
   (state) => state?.selectedTime
 );
+
+export const getOrderForm = createSelector(
+  selectGlobalState,
+  (state) => state?.orderForm
+);

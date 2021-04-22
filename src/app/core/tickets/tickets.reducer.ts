@@ -34,10 +34,17 @@ export const selectTicketList = createSelector(selectTicketState, selectAll);
 
 export const selectSelectedTickets = createSelector(
   selectTicketList,
-  (state) => state.filter(_ => _.count > 0)
+  (tickets) => tickets.filter(_ => _.count > 0)
 );
 
 export const selectIsExistsSelectedTickets = createSelector(
   selectSelectedTickets,
-  (state) => state.length > 0
+  (tickets) => tickets.length > 0
+);
+
+export const selectPriceSumTickets = createSelector(
+  selectSelectedTickets,
+  (tickets) => tickets.reduce((a, b) => {
+    return a + (b.price * b.count);
+  }, 0)
 );

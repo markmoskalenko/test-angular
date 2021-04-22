@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TimeModel } from '../global/time.model';
 import { loadTicketsAction, orderTicketAction } from './tickets.actions';
-import { selectIsExistsSelectedTickets, selectSelectedTickets, selectTicketList } from './tickets.reducer';
+import { selectIsExistsSelectedTickets, selectPriceSumTickets, selectSelectedTickets, selectTicketList } from './tickets.reducer';
 import { Observable } from 'rxjs';
 import { TicketModel } from './ticket.model';
 
@@ -31,5 +31,9 @@ export class TicketsService {
 
   getSelectedTickets(): Observable<TicketModel[]> {
     return this.store.pipe(select(selectSelectedTickets));
+  }
+
+  getSum(): Observable<number> {
+    return this.store.pipe(select(selectPriceSumTickets));
   }
 }
